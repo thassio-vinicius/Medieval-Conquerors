@@ -13,7 +13,8 @@ public class BattleScript : MonoBehaviourPun
     public LayerMask layerMask;
     private Rigidbody2D rb;
     public GameObject deathPanel;
-    private bool isDead = false;
+    [HideInInspector]
+    public bool isDead;
     public Transform attackPoint;
     public float attackRadius;
     private Animator animator;
@@ -38,12 +39,10 @@ public class BattleScript : MonoBehaviourPun
     private void Attack()
     {
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRadius, layerMask);
-        Debug.Log("attack function called");
 
         foreach (Collider2D enemy in hitEnemies)
         {
 
-            Debug.Log("loop called");
 
             float defaultDamageAmount = gameObject.GetComponent<PlayerController>().combo;
 
@@ -55,16 +54,12 @@ public class BattleScript : MonoBehaviourPun
     [PunRPC]
     public void DoDamage(float damageAmount)
     {
-        Debug.Log("Do damage function called");
         if (!isDead)
         {
-                animator.SetBool("isTakingHit", true);
+            animator.SetBool("isTakingHit", true);
             currentHealth -= damageAmount;
 
             healthBar.fillAmount = currentHealth / maxHealth;
-
-            Debug.Log("current health" + currentHealth);
-
 
             if (currentHealth <= 0)
             {
@@ -87,9 +82,17 @@ public class BattleScript : MonoBehaviourPun
             deathPanel.GetComponentInChildren<Text>().text = "You Died!";
             deathPanel.SetActive(true);
             GameObject.Find("Close Button").SetActive(false);
+            StartCoroutine("DeactivateAfterSeconds");
 
         }
 
+    }
+
+    IEnumerator DeactivateAfterSeconds()
+    {
+        yield return new WaitForSeconds(.5f);
+
+        PhotonNetwork.LeaveRoom();
     }
 
     private void OnTriggerEnter2D(Collider2D other)

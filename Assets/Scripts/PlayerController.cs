@@ -57,7 +57,6 @@ public class PlayerController : MonoBehaviourPun
             lastTime = Time.time + comboCooldown;
         }
 
-        Debug.Log("Time - lastTime " + (Time.time - lastTime));
 
         if ((Time.time - lastTime) > comboCooldown)
         {
@@ -112,16 +111,6 @@ public class PlayerController : MonoBehaviourPun
 
             }
         }
-    }
-
-    private void OnCollisionEnter2D(Collision2D other) 
-    {
-        if(other.gameObject.tag == "Player" && other.collider is CapsuleCollider2D) otherPlayerTackled = true;
-    }
-
-    private void OnCollisionExit2D(Collision2D other) 
-    {
-        if(other.gameObject.tag == "Player") otherPlayerTackled = false;
     }
 
     private void CheckInput()
@@ -203,7 +192,6 @@ public class PlayerController : MonoBehaviourPun
     {
         if (isGrounded && !isJumping && photon.IsMine && !otherPlayerTackled) 
         {
-            Debug.Log("This one");
             newVelocity.Set(movementSpeed * xInput, 0.0f);
             rb.velocity = newVelocity;
         }

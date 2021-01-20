@@ -67,8 +67,6 @@ public class SpawnManager : MonoBehaviourPunCallbacks
         {
             string temp = playerSelected as string;
 
-            Debug.Log("Player selected is " + temp);
-
             int randomSpawnPoint = Random.Range(0, spawnPositions.Length - 1);
 
             Vector3 instantiatePosition = spawnPositions[randomSpawnPoint].position;

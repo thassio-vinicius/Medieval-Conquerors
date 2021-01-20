@@ -490,6 +490,7 @@ GameObject:
   - component: {fileID: 921069129}
   - component: {fileID: 1916749129474714265}
   - component: {fileID: 6773858018887324654}
+  - component: {fileID: 5211204437402465463}
   m_Layer: 13
   m_Name: Paladin
   m_TagString: Player
@@ -645,6 +646,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8192
   deathPanel: {fileID: 7401004932311341356}
+  isDead: 0
   attackPoint: {fileID: 6408595976245218201}
   attackRadius: 0.75
 --- !u!61 &6773858018887324654
@@ -673,6 +675,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.8828969, y: 0.033195734}
   m_EdgeRadius: 0
+--- !u!114 &5211204437402465463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7673924867150778348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4623a4440a0888f48ae649ae4eab40dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  winPanel: {fileID: 7401004932311341356}
 --- !u!1 &7673924867303567387
 GameObject:
   m_ObjectHideFlags: 0

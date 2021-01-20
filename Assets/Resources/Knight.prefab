@@ -226,6 +226,7 @@ GameObject:
   - component: {fileID: 177484601}
   - component: {fileID: 7388287677937329162}
   - component: {fileID: 709659953893912843}
+  - component: {fileID: 4603319100703581330}
   m_Layer: 13
   m_Name: Knight
   m_TagString: Player
@@ -381,6 +382,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8192
   deathPanel: {fileID: 5677544789109126215}
+  isDead: 0
   attackPoint: {fileID: 2567416190008014210}
   attackRadius: 0.75
 --- !u!61 &709659953893912843
@@ -409,6 +411,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.9962119, y: 0.035917044}
   m_EdgeRadius: 0
+--- !u!114 &4603319100703581330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2612215937497917638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4623a4440a0888f48ae649ae4eab40dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  winPanel: {fileID: 5677544789109126215}
 --- !u!1 &2612215938973826092
 GameObject:
   m_ObjectHideFlags: 0

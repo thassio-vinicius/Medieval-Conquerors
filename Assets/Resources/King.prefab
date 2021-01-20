@@ -311,6 +311,7 @@ GameObject:
   - component: {fileID: 120598776}
   - component: {fileID: 7431516275699651504}
   - component: {fileID: 3649017494591752010}
+  - component: {fileID: 1601521912421832549}
   m_Layer: 13
   m_Name: King
   m_TagString: Player
@@ -466,6 +467,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8192
   deathPanel: {fileID: 763170065179207037}
+  isDead: 0
   attackPoint: {fileID: 481705879206328387}
   attackRadius: 0.75
 --- !u!61 &3649017494591752010
@@ -494,6 +496,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.9676092, y: 0.04393077}
   m_EdgeRadius: 0
+--- !u!114 &1601521912421832549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1426306703082509666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4623a4440a0888f48ae649ae4eab40dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  winPanel: {fileID: 763170065179207037}
 --- !u!1 &1426306703216165256
 GameObject:
   m_ObjectHideFlags: 0

@@ -796,6 +796,7 @@ GameObject:
   - component: {fileID: 1711351223}
   - component: {fileID: 8196651405001456755}
   - component: {fileID: 6517940398304337269}
+  - component: {fileID: 1775800554470301660}
   m_Layer: 13
   m_Name: Samurai
   m_TagString: Player
@@ -951,6 +952,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8192
   deathPanel: {fileID: 367391072149939274}
+  isDead: 0
   attackPoint: {fileID: 1729069729087829929}
   attackRadius: 0.75
 --- !u!61 &6517940398304337269
@@ -979,6 +981,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.2264981, y: 0.032347202}
   m_EdgeRadius: 0
+--- !u!114 &1775800554470301660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5000751297728559491}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4623a4440a0888f48ae649ae4eab40dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  winPanel: {fileID: 367391072149939274}
 --- !u!1 &6276340531323137855
 GameObject:
   m_ObjectHideFlags: 0

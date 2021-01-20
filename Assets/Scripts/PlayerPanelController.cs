@@ -20,11 +20,13 @@ public class PlayerPanelController : MonoBehaviour
 
     public void ExitGame()
     {
+        Destroy(gameObject);
         Application.Quit();
     }
 
     public void BackToMenu()
     {
+        Destroy(gameObject);
         SceneManager.LoadScene("MainMenu");
     }
 
