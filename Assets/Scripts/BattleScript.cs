@@ -52,6 +52,28 @@ public class BattleScript : MonoBehaviourPun
     }
 
     [PunRPC]
+    public void UpdateDeathCount(string sender)
+    {
+        var photonViews = UnityEngine.Object.FindObjectsOfType<PhotonView>();
+        foreach (var view in photonViews)
+        {
+            var player = view.Owner;
+            //Objects in the scene don't have an owner, its means view.owner will be null
+            if (player != null)
+            {
+                var playerPrefabObject = view.gameObject;
+
+                MatchController controller = playerPrefabObject.GetComponent<MatchController>();
+
+                //do works...
+                controller.deathCounts += 1;
+
+            }
+        }
+        isDead = true;
+    }
+
+    [PunRPC]
     public void DoDamage(float damageAmount)
     {
         if (!isDead)
@@ -68,21 +90,26 @@ public class BattleScript : MonoBehaviourPun
         }
     }
 
+
+
     void Die()
     {
-        animator.SetBool("isDead", true);
+
+        photonView.RPC("UpdateDeathCount", RpcTarget.OthersBuffered, parameters: gameObject.name);
+        isDead = true;
+
 
         if (photonView.IsMine)
         {
+            animator.SetBool("isDead", true);
             GetComponent<CapsuleCollider2D>().enabled = false;
             GetComponent<BoxCollider2D>().enabled = true;
             GetComponent<Rigidbody2D>().mass = 100;
-            isDead = true;
             GetComponent<PlayerController>().enabled = false;
             deathPanel.GetComponentInChildren<Text>().text = "You Died!";
             deathPanel.SetActive(true);
-            GameObject.Find("Close Button").SetActive(false);
-            StartCoroutine("DeactivateAfterSeconds");
+            GameObject closeButton = GameObject.Find("Close Button");
+            if (closeButton != null) closeButton.SetActive(false);
 
         }
 
@@ -92,7 +119,6 @@ public class BattleScript : MonoBehaviourPun
     {
         yield return new WaitForSeconds(.5f);
 
-        PhotonNetwork.LeaveRoom();
     }
 
     private void OnTriggerEnter2D(Collider2D other)

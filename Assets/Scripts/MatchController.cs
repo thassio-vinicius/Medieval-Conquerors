@@ -8,7 +8,8 @@ public class MatchController : MonoBehaviourPun
     public GameObject winPanel;
     private Dictionary<int, Photon.Realtime.Player> players = new Dictionary<int, Photon.Realtime.Player>();
     private bool isDead;
-    private int deathCounts = 0;
+    public int deathCounts = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,20 +19,8 @@ public class MatchController : MonoBehaviourPun
     // Update is called once per frame
     void Update()
     {
+
         isDead = GetComponent<BattleScript>().isDead;
-
-        foreach (Photon.Realtime.Player player in players.Values)
-        {
-
-            if (GetComponent<BattleScript>().isDead)
-            {
-                deathCounts++;
-            }
-
-        }
-
-        if(!isDead) print("deathcounts for alive player " + deathCounts );
-
 
         if (deathCounts == PhotonNetwork.CurrentRoom.PlayerCount - 1 || PhotonNetwork.CurrentRoom.PlayerCount == 1)
         {
@@ -40,9 +29,12 @@ public class MatchController : MonoBehaviourPun
                 GetComponent<PlayerController>().enabled = false;
                 winPanel.GetComponentInChildren<Text>().text = "You Won!";
                 winPanel.SetActive(true);
-                GameObject.Find("Close Button").SetActive(false);
+                GameObject closeButton = GameObject.Find("Close Button");
+                if (closeButton != null) closeButton.SetActive(false);
                 this.enabled = false;
             }
         }
     }
+
+    
 }

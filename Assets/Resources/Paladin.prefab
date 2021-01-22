@@ -592,6 +592,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   teleportIfDistanceGreatherThan: 1
   isTeleportEnabled: 0
+  isDead: 0
   body: {fileID: 7673924867303567386}
 --- !u!114 &921069128
 MonoBehaviour:
@@ -688,6 +689,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   winPanel: {fileID: 7401004932311341356}
+  deathCounts: 0
 --- !u!1 &7673924867303567387
 GameObject:
   m_ObjectHideFlags: 0

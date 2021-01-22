@@ -413,6 +413,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   teleportIfDistanceGreatherThan: 1
   isTeleportEnabled: 0
+  isDead: 0
   body: {fileID: 1426306703216165259}
 --- !u!114 &120598775
 MonoBehaviour:

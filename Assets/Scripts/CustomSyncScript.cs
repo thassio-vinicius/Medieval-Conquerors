@@ -6,7 +6,7 @@ using UnityEngine;
 public class CustomSyncScript : MonoBehaviour, IPunObservable
 {
     public float teleportIfDistanceGreatherThan = .3f;
-    public bool isTeleportEnabled = true;
+    public bool isTeleportEnabled = true, isDead;
     public Transform body;
     Rigidbody2D rb;
     PhotonView photonView;
@@ -14,6 +14,7 @@ public class CustomSyncScript : MonoBehaviour, IPunObservable
     Quaternion networkRotation, networkBodyRotation;
     float distance;
     Animator anim;
+    bool calledOnce = false;
 
     private void Awake()
     {
@@ -65,12 +66,13 @@ public class CustomSyncScript : MonoBehaviour, IPunObservable
             anim.SetBool("isJumping", (bool)stream.ReceiveNext());
             anim.SetBool("isTakingHit", (bool)stream.ReceiveNext());
 
-            bool isDead = (bool)stream.ReceiveNext();
+            isDead = (bool)stream.ReceiveNext();
 
             anim.SetBool("isDead", isDead);
 
             if (isDead)
             {
+
                 GetComponent<CapsuleCollider2D>().enabled = false;
                 GetComponent<BoxCollider2D>().enabled = true;
             }
