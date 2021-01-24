@@ -1,4 +1,4 @@
-# Medieval-Conquerors
+# Medieval Conquerors
 
 Medieval Conquerors is a 2D Online PVP game created using Photon. In Medieval Conquerors, you can choose your Conqueror and get into a 1v1 fight with an enemy player.
 
