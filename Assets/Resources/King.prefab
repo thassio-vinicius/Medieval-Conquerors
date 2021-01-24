@@ -510,6 +510,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   winPanel: {fileID: 763170065179207037}
+  deathCounts: 0
 --- !u!1 &1426306703216165256
 GameObject:
   m_ObjectHideFlags: 0

@@ -103,9 +103,9 @@ public class ConnectionPanelController : MonoBehaviourPunCallbacks
     {
         int playersCount = PhotonNetwork.CurrentRoom.PlayerCount;
 
-        if (playersCount < 4)
+        if (playersCount < 2)
         {
-            int currentCount = 4 - playersCount;
+            int currentCount = 2 - playersCount;
             connectionStatusText.text = "JOINED " 
             + PhotonNetwork.CurrentRoom.Name + "\nWAITING FOR " 
             + currentCount + (currentCount == 1 ? " MORE PLAYER." : " MORE PLAYERS...");
@@ -128,7 +128,7 @@ public class ConnectionPanelController : MonoBehaviourPunCallbacks
     {
         int playersCount = PhotonNetwork.CurrentRoom.PlayerCount;
 
-        int currentCount = 4 - playersCount;
+        int currentCount = 2 - playersCount;
             connectionStatusText.text = "JOINED " 
             + PhotonNetwork.CurrentRoom.Name + "\nWAITING FOR " 
             + currentCount + (currentCount == 1 ? " MORE PLAYER." : " MORE PLAYERS...");
@@ -149,7 +149,7 @@ public class ConnectionPanelController : MonoBehaviourPunCallbacks
         }
 
 
-        if (PhotonNetwork.CurrentRoom.PlayerCount == 4) StartCoroutine(LoadLevelScene(2f));
+        if (PhotonNetwork.CurrentRoom.PlayerCount == 2) StartCoroutine(LoadLevelScene(2f));
 
     }
 
@@ -171,7 +171,7 @@ public class ConnectionPanelController : MonoBehaviourPunCallbacks
         string randomRoomName = "ROOM" + Random.Range(0, 10000);
 
         RoomOptions roomOptions = new RoomOptions();
-        roomOptions.MaxPlayers = 4;
+        roomOptions.MaxPlayers = 2;
 
         //creating the room
         PhotonNetwork.CreateRoom(randomRoomName, roomOptions);
